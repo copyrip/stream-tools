@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>URL Parameters Example</title>
+    <!-- Include IBM Plex Mono and Sans-serif fonts from Google Fonts CDN -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:200,400,500,700|IBM+Plex+Sans:400,500,700">
+    <link rel="stylesheet" href="../css/reset.css">
+<style>
+h1 {
+  height:100vh;
+  background:lightgrey;
+  font-size:100vh;
+
+  font-size: clamp(1rem, 2vw + 0.75rem, 1.5rem);
+}
+</style>
+</head>
+<body>
+    <div id="content">
+	<h1 id="title">to setup title, add "?title=MyTitle" at the end of the url</h1>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // Function to get URL parameters by name
+        function getParameterByName(name) {
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(window.location.search);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+
+        // Get the parameters from the URL
+        var titleParam = getParameterByName('title');
+
+        // Update the content with the parameters
+        if (titleParam) {
+            $('#title').text(titleParam);
+        }
+    </script>
+</body>
+</html>
+

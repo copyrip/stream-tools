@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Rain Effect with Images</title>
+    <style>
+body {
+  margin: 0;
+  overflow: hidden;
+}
+
+	#rain-container {
+	  position: fixed;
+	  top: 0;
+	  left: 0;
+	  width: 100%;
+	  height: 100%;
+	}
+
+	body {
+	  margin: 0;
+	  overflow: hidden;
+	}
+
+	#rain-container {
+	  position: absolute;
+	  top: 0;
+	  left: 0;
+	  width: 100%;
+	  height: 100%;
+	}
+
+	.rain-droplet {
+	  position: absolute;
+	  width: 60px; /* Adjust the width and height as needed */
+	  height: 60px;
+	  background-size: cover;
+	  animation: fall 3s linear infinite;
+	}
+
+	@keyframes fall {
+	  0% {
+	    transform: translateY(0);
+	    opacity: 1;
+	  }
+	  100% {
+	    transform: translateY(100vh);
+	    opacity: 1;
+	  }
+	}
+    </style>
+  </head>
+  <body>
+    <div id="rain-container"></div>
+    <script>
+
+      // An array of local image URLs (you can add more image URLs)
+      const imageUrls = [
+	'../broccoli.png',
+	'../cake.png',
+	'../index.png',
+	'../carrot.png',
+	'../siren.png'
+      ];
+
+      const numDroplets = 100; // Number of rain droplets
+
+      const container = document.getElementById('rain-container');
+
+      // Create and animate rain droplets
+      for (let i = 0; i < numDroplets; i++) {
+	const droplet = document.createElement('div');
+	droplet.className = 'rain-droplet';
+	var img = imageUrls[Math.floor(Math.random() * imageUrls.length)];
+	console.log(img);
+	const randomLeft = Math.random() * 105 - 5;
+	droplet.style.left = `${randomLeft}vw`;
+	//droplet.style.backgroundImage = `url(${imageUrls[Math.floor(Math.random() * imageUrls.length)])}`;
+	droplet.style.backgroundImage = `url(${img})`;
+
+	const animationDuration = 5 + Math.random() * 5; // Vary the animation duration
+	droplet.style.animation = `fall ${animationDuration}s linear infinite`;
+
+	container.appendChild(droplet);
+      }
+
+    </script>
+  </body>
+</html>
+

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>URL Parameters Example</title>
+    <!-- Include IBM Plex Mono and Sans-serif fonts from Google Fonts CDN -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:200,400,500,700|IBM+Plex+Sans:400,500,700">
+<style>
+html, body {
+  margin:0;
+  padding:0;
+}
+	body {
+	  width:1920px;
+	  height:1080px;
+
+	  font-size:32pt;
+	}
+
+	#content {
+	  box-shadow:5px 5px 10px rgba(0,0,0,0.3);
+	  position:fixed;
+	  bottom:45px;
+	  left:25px;
+	  padding:10px;
+	  display:inline-block;
+	  background:#0000FF;
+	  border-radius:10px;
+	}
+
+	#name {
+	  color:#fff;
+	  font-family:"IBM Plex Mono", mono;
+	  font-weight:bold;
+	}
+
+	#occupation {
+	  color:#fff;
+	  font-family:"IBM Plex Mono", mono;
+	  font-weight:200;
+	  font-style:italic;
+	}
+
+	#ig {
+	  color:#fff;
+	  font-family:"IBM Plex Mono", mono;
+	  font-weight:200;
+	}
+</style>
+</head>
+<body>
+    <div id="content">
+        <div id="name"></div>
+	<div><i id="occupation"></i></div>
+        <div id="ig"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // Function to get URL parameters by name
+        function getParameterByName(name) {
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(window.location.search);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+
+        // Get the parameters from the URL
+        var nameParam = getParameterByName('name');
+        var occupationParam = getParameterByName('occupation');
+        var igParam = getParameterByName('ig');
+
+        // Update the content with the parameters
+        if (nameParam) {
+            $('#name').text(nameParam);
+        }
+        if (occupationParam) {
+            $('#occupation').text(occupationParam);
+        }
+        if (igParam) {
+            $('#ig').text(igParam);
+        }
+    </script>
+</body>
+</html>
+
