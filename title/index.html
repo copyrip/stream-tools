@@ -52,6 +52,7 @@ h1 {
         // Get the parameters from the URL
         var titleParam = getParameterByName('title');
         var fontSize = getParameterByName('fs');
+        var color = getParameterByName('color');
 
         // Update the content with the parameters
         if (titleParam) {
@@ -62,8 +63,12 @@ h1 {
             $('#title').css("font-size",fontSize + "pt");
         }
 
+        if (color) {
+            $('#title').css("color",color);
+        }
 
-	if(!fontSize &&  !titleParam){
+
+	if(!fontSize &&  !titleParam && !color){
 	  $("#helper").show();
 	}
 

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>1ND3X LOGO</title>
+    <!-- Include IBM Plex Mono and Sans-serif fonts from Google Fonts CDN -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:200,400,500,700|IBM+Plex+Sans:400,500,700">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link href="https://fonts.cdnfonts.com/css/garamond" rel="stylesheet">
+    <style>
+html, body {
+  height:100%;
+}
+#content {
+  height:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+h1 {
+  font-family:"Garamond", serif;
+  font-size:100vh;
+
+  font-size:20pt;
+  text-align:center;
+  color:white;
+}
+#wrap {
+  position:fixed;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:200px;
+  width:200px;
+}
+#logo {
+  position:fixed;
+  width:200px;
+  height:200px;
+  background: rgb(255,0,0);
+  background: radial-gradient(circle, rgba(255,0,0,1) 0%, rgba(255,0,0,1) 10%, rgba(255,255,255,0) 80%, rgba(255,255,255,0) 100%);
+  border-radius:50%;
+
+  animation: breath alternate infinite 2s ease-out;
+}
+
+#helper {
+  display:none;
+}
+
+      .top {top:0;}
+      .bottom {bottom:0;}
+      .right {right:0;}
+      .left {left:0;}
+
+      @keyframes breathing {
+	from {
+	  background: radial-gradient(circle, rgba(255,0,0,1) 0%, rgba(255,0,0,1) 10%, rgba(255,255,255,0) 80%, rgba(255,255,255,0) 100%);
+	}
+	to {
+	  background: radial-gradient(circle, rgba(255,0,0,1) 0%, rgba(255,0,0,1) 100%, rgba(255,0,0,1) 100%,rgba(255,0,0,1) 100%);
+	}
+      }
+
+      @keyframes breath {
+	from {
+	  width:60px;
+	  height:60px;
+	}
+	to {
+	  width:100px;
+	  height:100px;
+	}
+	@property --x {
+	  syntax: '<percentage>';
+	  inherits: false;
+	  initial-value: 0%;
+	}
+
+	#shine-div {
+	  height: 30vh;
+	  width: 60vw;
+	  margin: auto;
+	  border-radius: 10px;
+	  background: radial-gradient(ellipse farthest-corner at var(--x) 0%, #FFFFFF 0%, #ffb3ff 8%, #ff33ff 25%, #800080 62.5%, #b300b3 100%);
+	  animation: colorChange 5s infinite alternate;
+	}
+
+	@keyframes colorChange {
+	  0% {
+	    --x:0%;
+	  }
+	  50% {
+	    --x:50%;
+	  }
+	  100% {
+	    --x:100%;
+	  }
+	}
+    </style>
+  </head>
+  <body>
+
+    <div id="wrap">
+      <div id="logo"></div>
+      <h1>1ND3X</h1>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      // Function to get URL parameters by name
+      function getParameterByName(name) {
+	name = name.replace(/[\[\]]/g, "\\$&");
+	var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+	  results = regex.exec(window.location.search);
+	if (!results) return null;
+	if (!results[2]) return '';
+	return decodeURIComponent(results[2].replace(/\+/g, " "));
+      }
+
+      // Get the parameters from the URL
+      var classParam = getParameterByName('align');
+      var fontSize = getParameterByName('fs');
+
+      // Update the content with the parameters
+      if (classParam) {
+	console.log(classParam);
+	$('#wrap').addClass(classParam);
+      }
+
+      console.log(!fontSize);
+    </script>
+  </body>
+</html>
+

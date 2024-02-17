@@ -3,6 +3,9 @@ A collection of usefulwebpage for streaming.
 
 ## to do
 * [ ] main index.html page
+* [ ] TEMPLATE
+    * [ ] raw css param 
+* [ ] cleaner helper (php ?)
 * [ ] infos if no params
 * [ ] better documentation
 * [ ] more parameters
