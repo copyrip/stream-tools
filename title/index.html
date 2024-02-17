@@ -5,17 +5,34 @@
     <!-- Include IBM Plex Mono and Sans-serif fonts from Google Fonts CDN -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:200,400,500,700|IBM+Plex+Sans:400,500,700">
     <link rel="stylesheet" href="../css/reset.css">
+    <link href="https://fonts.cdnfonts.com/css/garamond" rel="stylesheet">
 <style>
+html, body {
+  height:100%;
+}
+#content {
+  height:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
 h1 {
-  height:100vh;
-  background:lightgrey;
+  font-family:"Garamond", serif;
   font-size:100vh;
 
-  font-size: clamp(1rem, 2vw + 0.75rem, 1.5rem);
+  font-size:20pt;
+  text-align:center;
 }
+
+	#helper {
+	  display:none;
+	}
 </style>
 </head>
 <body>
+  <div id="helper">
+    YOU DIDN'T SET ANY PARAMETERS !
+  </div>
     <div id="content">
 	<h1 id="title">to setup title, add "?title=MyTitle" at the end of the url</h1>
     </div>
@@ -34,11 +51,23 @@ h1 {
 
         // Get the parameters from the URL
         var titleParam = getParameterByName('title');
+        var fontSize = getParameterByName('fs');
 
         // Update the content with the parameters
         if (titleParam) {
             $('#title').text(titleParam);
         }
+
+        if (fontSize) {
+            $('#title').css("font-size",fontSize + "pt");
+        }
+
+
+	if(!fontSize &&  !titleParam){
+	  $("#helper").show();
+	}
+
+	console.log(!fontSize);
     </script>
 </body>
 </html>
